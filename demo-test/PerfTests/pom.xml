@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.intrasoft.stsc</groupId>
+    <artifactId>demo-perf-tests</artifactId>
+    <version>1.0.0.0</version>
+    <packaging>pom</packaging>
+    <name>DEMO App</name>
+
+    <properties>
+        <jmeter.version>2.9.0</jmeter.version>
+		<app.protocol>http</app.protocol>
+		<app.host>localhost</app.host>
+		<app.ports>7001</app.ports>
+    </properties>
+
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>${jmeter.version}</version>
+				<configuration>
+                    <testResultsTimestamp>true</testResultsTimestamp>
+				</configuration>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/target/jmeter/results/dashboard" />
+                                <copy file="${basedir}/src/test/resources/reportgenerator.properties" 
+									  tofile="${basedir}/target/jmeter/bin/reportgenerator.properties" />
+                                <copy todir="${basedir}/target/jmeter/bin/report-template">
+                                    <fileset dir="${basedir}/src/test/resources/report-template" />
+                                </copy>
+                                <java jar="${basedir}/target/jmeter/bin/ApacheJMeter-5.1.1.jar" fork="true">
+                                    <arg value="-g" />
+                                    <arg value="${basedir}/target/jmeter/results/*.csv" />
+                                    <arg value="-o" />
+                                    <arg value="${basedir}/target/jmeter/results/dashboard/" />
+                                </java>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+	</build>
+	
+</project>

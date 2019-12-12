@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.intrasoft.stsc</groupId>
+    <artifactId>demo-app-srv-test</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>DEMO APP</name>
+
+    <properties>
+		<testSuite></testSuite>
+		<testCase></testCase>
+    </properties>
+	
+    <url>http://maven.apache.org</url>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>SmartBearPluginRepository</id>
+            <url>http://smartbearsoftware.com/repository/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.smartbear.soapui</groupId>
+                <artifactId>soapui-maven-plugin</artifactId>
+                <version>5.5.0</version>   
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <projectFile>./src/test/soapui/demo-app-soapui-project-v2.xml</projectFile>
+							<junitReport>true</junitReport>
+							<outputFolder>${project.basedir}/target/surefire-reports</outputFolder>
+							<testSuite>${testSuite}</testSuite>
+							<testCase>${testCase}</testCase>                            
+                        </configuration>
+                    </execution>
+                </executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.jgoodies</groupId>
+						<artifactId>forms</artifactId>
+						<version>1.0.7</version>
+					</dependency>
+				</dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

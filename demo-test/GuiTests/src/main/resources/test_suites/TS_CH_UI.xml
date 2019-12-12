@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TS_CH_UI" verbose="1">
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="TC_CH_UI_001_CreateNewContact">
+        <classes>
+            <class name="com.intrasoft.codinghive.test_cases.TS_CH_UI.TC_CH_UI_001_CreateNewContact"></class>
+        </classes>
+    </test>
+    <test name="TC_CH_UI_002_CreateNewContactOnlyMandatory">
+        <classes>
+            <class name="com.intrasoft.codinghive.test_cases.TS_CH_UI.TC_CH_UI_002_CreateNewContactOnlyMandatory"></class>
+        </classes>
+    </test>
+    <test name="TC_CH_UI_003_SearchAndViewContact">
+        <classes>
+            <class name="com.intrasoft.codinghive.test_cases.TS_CH_UI.TC_CH_UI_003_SearchAndViewContact"></class>
+        </classes>
+    </test>
+    <test name="TC_CH_UI_004_SearchAndEditContact">
+        <classes>
+            <class name="com.intrasoft.codinghive.test_cases.TS_CH_UI.TC_CH_UI_004_SearchAndEditContact"></class>
+        </classes>
+    </test>
+    <test name="TC_CH_UI_005_DeleteContacts">
+        <classes>
+            <class name="com.intrasoft.codinghive.test_cases.TS_CH_UI.TC_CH_UI_005_DeleteContacts"></class>
+        </classes>
+    </test>
+</suite>

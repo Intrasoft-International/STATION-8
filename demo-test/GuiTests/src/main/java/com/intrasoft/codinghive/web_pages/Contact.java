@@ -137,6 +137,13 @@ public class Contact extends BaseTest {
     }
 
     private void dropdown(WebElement dropdown, String value) {
+        // not working for p-dropdown
+        //new Select(driver.findElement(By.name("city"))).selectByVisibleText("Athens");
+
+        // not working for p-dropdown
+        //driver.findElement(By.name("city")).click();
+        //new Select(driver.findElement(By.name("city"))).selectByVisibleText("Athens");
+
         if (value != null && !value.isEmpty()) {
             dropdown.click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(@class,'ui-dropdown-item')]")));
@@ -145,6 +152,51 @@ public class Contact extends BaseTest {
     }
 
     private void checkbox(String checkboxLabel, String value) {
+        // CHECKBOX
+        //label[text()='Disabled']/preceding-sibling::input[@type='checkbox']
+
+        // common click() is not working for angular primeng checkbox
+        //driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']")).click();
+
+        // with ACTIONS is not working. no error but no clicking too
+        //WebElement chbox = driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']"));
+        //Actions action = new Actions(driver);
+        //action.click(chbox).perform();
+
+        // with JAVASCRIPT EXECUTOR works properly
+
+        //System.out.println("VALUE BEFORE CLICKING:" + driver
+        //        .findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']"))
+        //        .getAttribute("value"));
+        //WebElement chbox = driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']"));
+        //((JavascriptExecutor) driver).executeScript("arguments[0].click();", chbox);
+        //System.out.println("VALUE AFTER CLICKING:" + driver
+        //        .findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']"))
+        //        .getAttribute("value"));
+
+        //if (driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']")).isSelected()) {
+        //    System.out.println("SELECTED");
+        //} else {
+        //    System.out.println("NOT SELECTED");
+        //}
+        //((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']")));
+        //if (driver.findElement(By.xpath("//label[text()='Disabled']/preceding-sibling::input[@type='checkbox']")).isSelected()) {
+        //    System.out.println("SELECTED");
+        //} else {
+        //    System.out.println("NOT SELECTED");
+        //}
+
+        // WHEN the desired option is to ENABLE the contact
+        //  IF the checkbox is unchecked
+        //      no action
+        //  ELSE
+        //      check the checkbox
+        // WHEN the desired option is to DISABLE the contact
+        //  IF the checkbox is unchecked
+        //      check the checkbox
+        //  ELSE
+        //      no action
+
         if (value != null && !value.isEmpty()) {
             WebElement chbox;
             if (value.equalsIgnoreCase("enabled")) {
@@ -162,6 +214,43 @@ public class Contact extends BaseTest {
     }
 
     private void radiobutton(String value) {
+        // RADIOBUTTON
+        //System.out.println("Selected Gender:" + driver.findElement(By.xpath("//p-radiobutton[@value='f']")).isSelected());
+        //
+        //if (isElementPresent(By.xpath("//p-radiobutton[@value='f']//*[contains(@class,'ui-state-active')]"))){
+        //    System.out.println("Selected Gender: female");
+        //} else {
+        //    if (isElementPresent(By.xpath("//p-radiobutton[@value='m']//*[contains(@class,'ui-state-active')]"))) {
+        //        System.out.println("Selected Gender: male");
+        //    }
+        //}
+        //
+        //driver.findElement(By.xpath("//p-radiobutton[@value='m']")).click();
+        //
+        //driver.findElement(By.xpath("//p-radiobutton[@value='m']//*[contains(@class,'ui-radiobutton-box')]")).click();
+        //
+        //if (isElementPresent(By.xpath("//p-radiobutton[@value='f']//*[contains(@class,'ui-state-active')]"))){
+        //    System.out.println("Selected Gender: female");
+        //} else {
+        //    if (isElementPresent(By.xpath("//p-radiobutton[@value='m']//*[contains(@class,'ui-state-active')]"))) {
+        //        System.out.println("Selected Gender: male");
+        //    }
+        //}
+        //
+        //WHEN the desired option for gender is FEMALE
+        //IF the selected radiobutton is FEMALE
+        //THEN no action
+        //ELSE
+        //IF the selected rariobutton is MALE
+        //THEN select FEMALE
+        //
+        //WHEN the desired option for gender is MALE
+        //IF the selected radiobutton is FEMALE
+        //THEN select MALE
+        //ELSE
+        //IF the selected rariobutton is MALE
+        //THEN no action
+
         if (value != null && !value.isEmpty()) {
             if (value.equalsIgnoreCase("female")) {
                 if (isElementPresent(By.xpath("//p-radiobutton[@value='m']//*[contains(@class,'ui-state-active')]"))) {

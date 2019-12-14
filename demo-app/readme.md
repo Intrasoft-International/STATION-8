@@ -1,4 +1,4 @@
-#DEMO Application
+<h1>DEMO Application</h1>
 
 <b>CRUD Application</b> to create/read/update/delete contacts. 
 

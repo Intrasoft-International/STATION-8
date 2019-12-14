@@ -1,4 +1,4 @@
-#DEMO Application | Test Automation Playground
+<h1>DEMO Application | Test Automation Playground</h1>
 
 <h3>UI ◦ SERVICE ◦ PERFORMANCE TEST CASES</h3>
 

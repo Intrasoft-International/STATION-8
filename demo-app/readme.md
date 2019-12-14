@@ -11,7 +11,7 @@
 - Open CMD and run commands from demo-app folder:
 
         docker-compose build
-        docker-compose down
+        docker-compose up
 - To stop demo-app just click CTRL + C or run command:
 
         docker-compose down

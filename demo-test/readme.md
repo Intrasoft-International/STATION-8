@@ -100,7 +100,7 @@ After execution of a WS Test Case/Suite, a report is generated automatically in 
 Within that folder, a “surefire-report.html” file will reside<br>
 with the results of the report for the WS Test Case/Suite that was executed. 
 
-<h5>>Execution of CleanupDB Test Case</h5>
+<h5>Execution of CleanupDB Test Case</h5>
 Assuming that the WS Test Cases Package was extracted to “C:\DEMO\SrvTests”,<br>
 open Git Bash and execute the following commands: 
 
